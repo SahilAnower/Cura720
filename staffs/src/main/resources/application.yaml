@@ -1,0 +1,61 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: "staffs"
+  datasource:
+    url: jdbc:postgresql://localhost:5432/staffs_db
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      probes:
+        enabled: true
+  info:
+    env:
+      enabled: true
+
+endpoints:
+  shutdown:
+    enabled: true
+
+info:
+  app:
+    name: "staffs"
+    description: "Cura720 Staffs Application"
+    version: "1.0.0"
+
+logging:
+  level:
+    com:
+      sahil:
+        hms:
+          staffs: DEBUG
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
