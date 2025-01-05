@@ -28,6 +28,11 @@ public class GatewayserverApplication {
 						.filters(f -> f.rewritePath("/curahms/staffs/(?<segment>.*)", "/${segment}")
 								.addResponseHeader("X-Response-Time", new Date().toString()))
 						.uri("lb://STAFFS"))
+				.route(r -> r
+						.path("/curahms/appointments/**")
+						.filters(f -> f.rewritePath("/curahms/appointments/(?<segment>.*)", "/${segment}")
+								.addResponseHeader("X-Response-Time", new Date().toString()))
+						.uri("lb://APPOINTMENTS"))
 				.build();
 	}
 
