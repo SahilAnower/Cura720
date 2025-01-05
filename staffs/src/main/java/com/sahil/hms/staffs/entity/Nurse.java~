@@ -20,6 +20,6 @@ public class Nurse extends User{
     private String shift;
     private String ward;
 
-    @OneToMany(mappedBy = "nurse", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Certification> certifications;
 }
